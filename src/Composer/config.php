@@ -12,6 +12,7 @@ return [
         'zendframework/zend-expressive-twigrenderer'     => '^0.1',
         'zendframework/zend-expressive-zendrouter'       => '^0.1',
         'zendframework/zend-expressive-zendviewrenderer' => '^0.1',
+        'zendframework/zend-i18n'                        => '^2.5',
         'zendframework/zend-servicemanager'              => '^2.5',
     ],
 
