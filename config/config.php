@@ -13,11 +13,11 @@ use Zend\Stdlib\Glob;
  * Obviously, if you use closures in your config you can't cache it.
  */
 
-$moduleManager = new ConfigLoader(
+$configManager = new ConfigLoader(
     Glob::glob('config/autoload/{{,*.}global,{,*.}local}.php', Glob::GLOB_BRACE),
     [
         ApplicationConfig::class
     ]
 );
 
-return $moduleManager->getMergedConfig();
+return $configManager->getMergedConfig();
