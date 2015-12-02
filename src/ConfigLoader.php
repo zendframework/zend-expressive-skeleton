@@ -33,6 +33,7 @@ class ConfigLoader
         $config = [];
         // Load configuration from autoload path
         foreach ($configFiles as $file) {
+            echo $file, "\n";
             $config = ArrayUtils::merge($config, include $file);
         }
         return $config;
