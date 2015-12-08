@@ -1,7 +1,7 @@
 <?php
 
-use Zend\Stdlib\ArrayUtils;
-use Zend\Stdlib\Glob;
+use Zend\Expressive\ConfigManager\ConfigManager;
+use Zend\Expressive\ConfigManager\GlobFileProvider;
 
 /**
  * Configuration files are loaded in a specific order. First ``global.php``, then ``*.global.php``.
@@ -12,24 +12,11 @@ use Zend\Stdlib\Glob;
  * Obviously, if you use closures in your config you can't cache it.
  */
 
-$cachedConfigFile = 'data/cache/app_config.php';
+$configManager = new ConfigManager(
+    [
+        new GlobFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
+    ]
+);
 
-$config = [];
-if (is_file($cachedConfigFile)) {
-    // Try to load the cached config
-    $config = include $cachedConfigFile;
-} else {
-    // Load configuration from autoload path
-    foreach (Glob::glob('config/autoload/{{,*.}global,{,*.}local}.php', Glob::GLOB_BRACE) as $file) {
-        $config = ArrayUtils::merge($config, include $file);
-    }
+return $configManager->getMergedConfig();
 
-    // Cache config if enabled
-    if (isset($config['config_cache_enabled']) && $config['config_cache_enabled'] === true) {
-        file_put_contents($cachedConfigFile, '<?php return ' . var_export($config, true) . ';');
-    }
-}
-
-// Return an ArrayObject so we can inject the config as a service in Aura.Di
-// and still use array checks like ``is_array``.
-return new ArrayObject($config, ArrayObject::ARRAY_AS_PROPS);
