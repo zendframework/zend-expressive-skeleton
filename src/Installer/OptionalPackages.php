@@ -7,7 +7,7 @@
  * @license   https://github.com/zendframework/zend-expressive-skeleton/blob/master/LICENSE.md New BSD License
  */
 
-namespace App\Composer;
+namespace Installer;
 
 use Composer\Composer;
 use Composer\Factory;
@@ -164,6 +164,9 @@ class OptionalPackages
 
         // Remove composer source
         unset(self::$composerDefinition['require-dev']['composer/composer']);
+
+        // Remove installer autoloader namespace
+        unset(self::$composerDefinition['autoload']['psr-4']['Installer\\']);
 
         // Remove installer data
         unset(self::$composerDefinition['extra']['optional-packages']);
