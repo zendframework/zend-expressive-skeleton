@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <?php echo $this->headTitle('zend-expressive')->setSeparator(' - ')->setAutoEscape(false) ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="http://framework.zend.com/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
     <?php echo $this->headMeta(); ?>
     <?php echo $this->headLink()
                     ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
@@ -29,7 +30,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo $this->url('home') ?>">
-                        <img src="/zf-logo.png" alt="Zend Expressive" />
+                        <img src="http://framework.zend.com/images/logos/zf-logo-mark.png" height="20" alt="Zend Expressive"/>
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -42,11 +43,6 @@
                         <li>
                             <a href="https://github.com/zendframework/zend-expressive" target="_blank">
                                 <i class="fa fa-wrench"></i> Contribute
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $this->url('api.ping') ?>">
-                                Ping Test
                             </a>
                         </li>
                     </ul>
