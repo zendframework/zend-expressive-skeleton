@@ -28,8 +28,8 @@ use RecursiveIteratorIterator;
  * Add this script to composer.json:
  *
  *  "scripts": {
- *      "pre-update-cmd": "Zend\\Expressive\\Composer\\OptionalPackages::install",
- *      "pre-install-cmd": "Zend\\Expressive\\Composer\\OptionalPackages::install"
+ *      "pre-update-cmd": "App\\Composer\\OptionalPackages::install",
+ *      "pre-install-cmd": "App\\Composer\\OptionalPackages::install"
  *  },
  */
 class OptionalPackages
@@ -389,7 +389,10 @@ class OptionalPackages
     private static function removeDefaultMiddleware(IOInterface $io, $projectRoot)
     {
         $io->write("<info>Removing default middleware classes and factories</info>");
-        self::recursiveRmdir($projectRoot . '/src/Action');
+        self::recursiveRmdir($projectRoot . '/src/App/Action');
+
+        $io->write("<info>Removing default middleware class tests</info>");
+        self::recursiveRmdir($projectRoot . '/test/AppTest/Action');
 
         $io->write("<info>Removing assets</info>");
         unlink($projectRoot . '/public/favicon.ico');

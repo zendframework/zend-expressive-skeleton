@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/App/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AppTest\\": "test/"
+            "AppTest\\": "test/AppTest/"
         }
     },
     "scripts": {
