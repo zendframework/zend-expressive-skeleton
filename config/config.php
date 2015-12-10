@@ -1,7 +1,7 @@
 <?php
 
 use Zend\Expressive\ConfigManager\ConfigManager;
-use Zend\Expressive\ConfigManager\GlobFileProvider;
+use Zend\Expressive\ConfigManager\PhpFileProvider;
 
 /**
  * Configuration files are loaded in a specific order. First ``global.php``, then ``*.global.php``.
@@ -14,9 +14,11 @@ use Zend\Expressive\ConfigManager\GlobFileProvider;
 
 $configManager = new ConfigManager(
     [
-        new GlobFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
+        new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
     ]
 );
 
-return $configManager->getMergedConfig();
+// Return an ArrayObject so we can inject the config as a service in Aura.Di
+// and still use array checks like ``is_array``.
+return new ArrayObject($configManager->getMergedConfig());
 
