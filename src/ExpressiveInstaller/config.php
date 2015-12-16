@@ -4,7 +4,7 @@ return [
     'packages' => [
         'aura/di'                                        => '3.0.*@beta',
         'filp/whoops'                                    => '^1.1',
-        'mouf/pimple-interop'                            => '^1.0',
+        'samburns/pimple3-containerinterop'              => '^1.2',
         'ocramius/proxy-manager'                         => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^1.0',
         'zendframework/zend-expressive-fastroute'        => '^1.0',
@@ -91,15 +91,15 @@ return [
                     ],
                 ],
                 2 => [
-                    'name'     => 'Pimple-interop',
+                    'name'     => 'Pimple3-ContainerInterop',
                     'packages' => [
-                        'mouf/pimple-interop',
+                        'samburns/pimple3-containerinterop',
                     ],
                     'copy-files' => [
-                        '/Resources/config/container-pimple-interop.php' => '/config/container.php',
+                        '/Resources/config/container-pimple3-containerinterop.php' => '/config/container.php',
                     ],
                     'minimal-files' => [
-                        '/Resources/config/container-pimple-interop.php' => '/config/container.php',
+                        '/Resources/config/container-pimple3-containerinterop.php' => '/config/container.php',
                     ],
                 ],
                 3 => [

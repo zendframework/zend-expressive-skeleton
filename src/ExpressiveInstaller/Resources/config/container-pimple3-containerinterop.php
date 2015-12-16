@@ -1,6 +1,6 @@
 <?php
 
-use Interop\Container\Pimple\PimpleInterop;
+use SamBurns\Pimple3ContainerInterop\ServiceContainer;
 
 // Load configuration
 $config = require __DIR__ . '/config.php';
