@@ -50,6 +50,9 @@
             "ExpressiveInstallerTest\\": "test/ExpressiveInstallerTest/"
         }
     },
+    "config": {
+        "process-timeout": 0
+    },
     "scripts": {
         "pre-install-cmd": "ExpressiveInstaller\\OptionalPackages::install",
         "pre-update-cmd": "ExpressiveInstaller\\OptionalPackages::install",
