@@ -2,7 +2,7 @@
 
 return [
     'packages' => [
-        'aura/di'                                        => '3.0.*@beta',
+        'aura/di'                                        => '^3.0',
         'filp/whoops'                                    => '^1.1 || ^2.0',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'ocramius/proxy-manager'                         => '^1.0 || ^2.0',
