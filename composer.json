@@ -18,6 +18,7 @@
         "zendframework/zend-stdlib": "^2.7 || ^3.0"
     },
     "require-dev": {
+        "zfcampus/zf-development-mode": "^3.0",
         "phpunit/phpunit": "^4.8",
         "squizlabs/php_codesniffer": "^2.3",
         "filp/whoops": "^1.1 || ^2.0",
@@ -46,7 +47,11 @@
     },
     "scripts": {
         "pre-install-cmd": "ExpressiveInstaller\\OptionalPackages::install",
-        "pre-update-cmd": "ExpressiveInstaller\\OptionalPackages::install",
+        "pre-update-cmd": "ExpressiveInstaller\\OptionalPackages::install",        
+        "post-create-project-cmd": ["@development-enable"],
+        "development-disable": "zf-development-mode disable",
+        "development-enable": "zf-development-mode enable",
+        "development-status": "zf-development-mode status",
         "check": [
             "@cs-check",
             "@test"
