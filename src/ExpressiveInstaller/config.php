@@ -19,6 +19,52 @@ return [
     ],
 
     'questions' => [
+        'container' => [
+            'question'               => 'Which container do you want to use for dependency injection?',
+            'default'                => 3,
+            'required'               => true,
+            'custom-package'         => true,
+            'custom-package-warning' => 'You need to edit public/index.php to start the custom container.',
+            'options'                => [
+                1 => [
+                    'name'     => 'Aura.Di',
+                    'packages' => [
+                        'aura/di',
+                    ],
+                    'copy-files' => [
+                        '/Resources/config/container-aura-di.php' => '/config/container.php',
+                    ],
+                    'minimal-files' => [
+                        '/Resources/config/container-aura-di.php' => '/config/container.php',
+                    ],
+                ],
+                2 => [
+                    'name'     => 'Pimple',
+                    'packages' => [
+                        'xtreamwayz/pimple-container-interop',
+                    ],
+                    'copy-files' => [
+                        '/Resources/config/container-pimple.php' => '/config/container.php',
+                    ],
+                    'minimal-files' => [
+                        '/Resources/config/container-pimple.php' => '/config/container.php',
+                    ],
+                ],
+                3 => [
+                    'name'     => 'Zend ServiceManager',
+                    'packages' => [
+                        'zendframework/zend-servicemanager',
+                    ],
+                    'copy-files' => [
+                        '/Resources/config/container-zend-servicemanager.php' => '/config/container.php',
+                    ],
+                    'minimal-files' => [
+                        '/Resources/config/container-zend-servicemanager.php' => '/config/container.php',
+                    ],
+                ],
+            ],
+        ],
+
         'router' => [
             'question'               => 'Which router do you want to use?',
             'default'                => 2,
@@ -65,52 +111,6 @@ return [
                     ],
                     'minimal-files' => [
                         '/Resources/config/routes-minimal-zf2-router.php' => '/config/autoload/routes.global.php',
-                    ],
-                ],
-            ],
-        ],
-
-        'container' => [
-            'question'               => 'Which container do you want to use for dependency injection?',
-            'default'                => 3,
-            'required'               => true,
-            'custom-package'         => true,
-            'custom-package-warning' => 'You need to edit public/index.php to start the custom container.',
-            'options'                => [
-                1 => [
-                    'name'     => 'Aura.Di',
-                    'packages' => [
-                        'aura/di',
-                    ],
-                    'copy-files' => [
-                        '/Resources/config/container-aura-di.php' => '/config/container.php',
-                    ],
-                    'minimal-files' => [
-                        '/Resources/config/container-aura-di.php' => '/config/container.php',
-                    ],
-                ],
-                2 => [
-                    'name'     => 'Pimple',
-                    'packages' => [
-                        'xtreamwayz/pimple-container-interop',
-                    ],
-                    'copy-files' => [
-                        '/Resources/config/container-pimple.php' => '/config/container.php',
-                    ],
-                    'minimal-files' => [
-                        '/Resources/config/container-pimple.php' => '/config/container.php',
-                    ],
-                ],
-                3 => [
-                    'name'     => 'Zend ServiceManager',
-                    'packages' => [
-                        'zendframework/zend-servicemanager',
-                    ],
-                    'copy-files' => [
-                        '/Resources/config/container-zend-servicemanager.php' => '/config/container.php',
-                    ],
-                    'minimal-files' => [
-                        '/Resources/config/container-zend-servicemanager.php' => '/config/container.php',
                     ],
                 ],
             ],
