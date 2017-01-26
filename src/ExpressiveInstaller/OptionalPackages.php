@@ -109,7 +109,7 @@ class OptionalPackages
         self::$projectRoot = realpath(dirname($composerFile));
 
         $io->write("<info>Setup data and cache dir</info>");
-        if (!is_dir(self::$projectRoot . '/data/cache')) {
+        if (! is_dir(self::$projectRoot . '/data/cache')) {
             mkdir(self::$projectRoot . '/data/cache', 0775, true);
             chmod(self::$projectRoot . '/data', 0775);
         }
@@ -240,6 +240,7 @@ class OptionalPackages
         unlink($projectRoot . '/CHANGELOG.md');
         unlink($projectRoot . '/CONDUCT.md');
         unlink($projectRoot . '/CONTRIBUTING.md');
+        unlink($projectRoot . '/phpcs.xml');
         self::recursiveRmdir(__DIR__);
         self::recursiveRmdir($projectRoot . '/test/ExpressiveInstallerTest');
 
@@ -305,7 +306,7 @@ class OptionalPackages
                 $packageName    = $match['name'];
                 $packageVersion = $match['version'];
 
-                if (!$packageVersion) {
+                if (! $packageVersion) {
                     $io->write("<error>No package version specified</error>");
                     continue;
                 }
@@ -313,7 +314,7 @@ class OptionalPackages
                 $io->write(sprintf("  - Searching for <info>%s:%s</info>", $packageName, $packageVersion));
 
                 $optionalPackage = $composer->getRepositoryManager()->findPackage($packageName, $packageVersion);
-                if (!$optionalPackage) {
+                if (! $optionalPackage) {
                     $io->write(sprintf("<error>Package not found %s:%s</error>", $packageName, $packageVersion));
                     continue;
                 }
@@ -442,7 +443,7 @@ class OptionalPackages
         }
 
         $destinationPath = dirname($projectRoot . $target);
-        if (!is_dir($destinationPath)) {
+        if (! is_dir($destinationPath)) {
             mkdir($destinationPath, 0775, true);
         }
 

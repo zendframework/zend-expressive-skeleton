@@ -20,7 +20,7 @@ class RemoveDevDependenciesTest extends InstallerTestCase
         'zendframework/zend-expressive-helpers',
         'zendframework/zend-stdlib',
         'phpunit/phpunit',
-        'squizlabs/php_codesniffer',
+        'zendframework/zend-coding-standard',
     ];
 
     private $devDependencies      = [
