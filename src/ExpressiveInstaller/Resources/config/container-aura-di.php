@@ -9,8 +9,8 @@ $config = require __DIR__ . '/config.php';
 $builder = new ContainerBuilder();
 $container = $builder->newInstance();
 
-// Inject config
-$container->set('config', $config);
+// Convert config to an object and inject it
+$container->set('config', new ArrayObject($config, ArrayObject::ARRAY_AS_PROPS));
 
 // Inject factories
 foreach ($config['dependencies']['factories'] as $name => $object) {
