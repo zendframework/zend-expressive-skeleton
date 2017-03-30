@@ -5,7 +5,8 @@
     "homepage": "https://github.com/zendframework/zend-expressive-skeleton",
     "license": "BSD-3-Clause",
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "bin-dir": "bin"
     },
     "extra": {
         "branch-alias": {
