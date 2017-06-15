@@ -105,6 +105,7 @@ class OptionalPackages
         'composer/composer',
         'filp/whoops',
         'mikey179/vfsstream',
+        'symfony/dependency-injection',
         'xtreamwayz/pimple-container-interop',
         'zendframework/zend-coding-standard',
         'zendframework/zend-expressive-aurarouter',

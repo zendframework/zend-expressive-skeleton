@@ -4,6 +4,7 @@ return [
     'packages' => [
         'aura/di'                                        => '^3.2',
         'filp/whoops'                                    => '^2.1.7',
+        'symfony/dependency-injection'                   => '^3.3',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
         'zendframework/zend-expressive-fastroute'        => '^2.0',
@@ -97,6 +98,24 @@ return [
                         'Resources/config/container-zend-servicemanager.php' => 'config/container.php',
                     ],
                 ],
+                4 => [
+                    'name'     => 'Symfony DependencyInjection',
+                    'packages' => [
+                        'symfony/dependency-injection',
+                    ],
+                    'flat' => [
+                        'Resources/config/container-symfony-di.php' => 'config/container.php',
+                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                    ],
+                    'modular' => [
+                        'Resources/config/container-symfony-di.php' => 'config/container.php',
+                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                    ],
+                    'minimal' => [
+                        'Resources/config/container-symfony-di.php' => 'config/container.php',
+                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                    ],
+                ]
             ],
         ],
 
