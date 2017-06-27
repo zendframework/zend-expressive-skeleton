@@ -9,7 +9,9 @@ require_once __DIR__ . '/ExpressiveSymfonyDelegatorFactory.php';
 $config = require __DIR__ . '/config.php';
 
 // Build container
-$container = new class() extends ContainerBuilder implements \Interop\Container\ContainerInterface {};
+$container = new class() extends ContainerBuilder implements \Interop\Container\ContainerInterface
+{
+};
 
 // Inject config
 $container->register('config')->setSynthetic(true);
@@ -56,7 +58,7 @@ if (! empty($config['dependencies']['delegators'])
             unset($config['dependencies']['invokables'][$service]);
         }
 
-        if (!is_callable($factory)) {
+        if (! is_callable($factory)) {
             continue;
         }
 
