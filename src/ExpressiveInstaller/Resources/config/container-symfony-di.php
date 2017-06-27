@@ -3,6 +3,7 @@
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require_once __DIR__ . '/CallableFactory.php';
+require_once __DIR__ . '/ExpressiveSymfonyDelegatorFactory.php';
 
 // Load configuration
 $config = require __DIR__ . '/config.php';
@@ -11,7 +12,8 @@ $config = require __DIR__ . '/config.php';
 $container = new class() extends ContainerBuilder implements \Interop\Container\ContainerInterface {};
 
 // Inject config
-$container->register('config', new ArrayObject($config, ArrayObject::ARRAY_AS_PROPS));
+$container->register('config')->setSynthetic(true);
+$container->set('config', $config);
 
 // Inject delegator factories
 // This is done early because Symfony Dependency Injection does not allow modification of a
@@ -29,13 +31,17 @@ if (! empty($config['dependencies']['delegators'])
             $factory = function () use ($instance) {
                 return $instance;
             };
-            unset($config['dependencies']['service'][$service]);
+            unset($config['dependencies']['services'][$service]);
         }
 
         if (isset($config['dependencies']['factories'][$service])) {
             // Marshal from factory
             $serviceFactory = $config['dependencies']['factories'][$service];
             $factory = function () use ($service, $serviceFactory, $container) {
+                if (is_string($serviceFactory) && class_exists($serviceFactory)) {
+                    $serviceFactory = new $serviceFactory;
+                }
+
                 return $serviceFactory($container, $service);
             };
             unset($config['dependencies']['factories'][$service]);
@@ -54,9 +60,11 @@ if (! empty($config['dependencies']['delegators'])
             continue;
         }
 
+        $delegatorFactory = new \App\ExpressiveSymfonyDelegatorFactory($delegatorNames, $factory);
         $container->register($service)
             ->addArgument($container)
-            ->setFactory([new \App\CallableFactory($factory), '__invoke']);
+            ->setClass($service)
+            ->setFactory([new \App\CallableFactory($delegatorFactory, $service), '__invoke']);
     }
 }
 
@@ -65,7 +73,8 @@ if (! empty($config['dependencies']['services'])
     && is_array($config['dependencies']['services'])
 ) {
     foreach ($config['dependencies']['services'] as $name => $service) {
-        $container->register($name, $service);
+        $container->register($name)->setSynthetic(true);
+        $container->set($name, $service);
     }
 }
 
@@ -73,7 +82,7 @@ if (! empty($config['dependencies']['services'])
 foreach ($config['dependencies']['factories'] as $name => $object) {
     $container->register($name)
         ->addArgument($container)
-        ->setFactory([new \App\CallableFactory($object), '__invoke']);
+        ->setFactory([new \App\CallableFactory($object, $name), '__invoke']);
 }
 
 // Inject invokables

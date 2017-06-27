@@ -103,18 +103,23 @@ return [
                     'packages' => [
                         'symfony/dependency-injection',
                     ],
+                    // @codingStandardsIgnoreStart
                     'flat' => [
-                        'Resources/config/container-symfony-di.php' => 'config/container.php',
-                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                        'Resources/config/container-symfony-di.php'           => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                   => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php' => 'config/ExpressiveSymfonyDelegatorFactory.php',
                     ],
                     'modular' => [
-                        'Resources/config/container-symfony-di.php' => 'config/container.php',
-                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                        'Resources/config/container-symfony-di.php'           => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                   => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php' => 'config/ExpressiveSymfonyDelegatorFactory.php',
                     ],
                     'minimal' => [
-                        'Resources/config/container-symfony-di.php' => 'config/container.php',
-                        'Resources/src/CallableFactory.php'         => 'config/CallableFactory.php',
+                        'Resources/config/container-symfony-di.php'           => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                   => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php' => 'config/ExpressiveSymfonyDelegatorFactory.php',
                     ],
+                    // @codingStandardsIgnoreEnd
                 ]
             ],
         ],
