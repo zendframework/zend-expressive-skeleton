@@ -6,6 +6,15 @@ namespace App;
 
 use Interop\Container\ContainerInterface;
 
+/**
+ * Symfony dependency injection compatible factory
+ *
+ * Turns any callable with the signature
+ *
+ * (ContainerInterface $container, string $serviceName) -> mixed $serviceInstance
+ *
+ * into a factory compatible with Symfony Dependency Injection
+ */
 final class CallableFactory
 {
     /**

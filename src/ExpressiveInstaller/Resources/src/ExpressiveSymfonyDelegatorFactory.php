@@ -6,6 +6,13 @@ namespace App;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * Symfony Dependency Injection compatible delegator factory
+ *
+ * Instances receive the list of delegator factory names or instances, and a
+ * closure that can create the initial service instance to pass to the first
+ * delegator.
+ */
 class ExpressiveSymfonyDelegatorFactory
 {
     /**
