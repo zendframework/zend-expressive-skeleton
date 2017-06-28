@@ -29,6 +29,7 @@
         "mikey179/vfsstream": "^1.6.4",
         "phpunit/phpunit": "^6.0.8 || ^5.7.15",
         "squizlabs/php_codesniffer": "^2.8.1",
+        "symfony/config": "^3.3",
         "symfony/dependency-injection": "^3.3",
         "xtreamwayz/pimple-container-interop": "^1.0",
         "zendframework/zend-coding-standard": "~1.0.0",

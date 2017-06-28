@@ -4,6 +4,7 @@ return [
     'packages' => [
         'aura/di'                                        => '^3.2',
         'filp/whoops'                                    => '^2.1.7',
+        'symfony/config'                                 => '^3.3',
         'symfony/dependency-injection'                   => '^3.3',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
