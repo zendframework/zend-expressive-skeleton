@@ -9,9 +9,7 @@ require_once __DIR__ . '/ExpressiveSymfonyDelegatorFactory.php';
 $config = require __DIR__ . '/config.php';
 
 // Build container
-$container = new class() extends ContainerBuilder implements \Interop\Container\ContainerInterface
-{
-};
+$container = new ContainerBuilder();
 
 // Inject config
 $container->register('config')->setSynthetic(true);

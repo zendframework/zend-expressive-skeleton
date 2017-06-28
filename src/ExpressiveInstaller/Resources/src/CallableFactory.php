@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * Symfony dependency injection compatible factory
