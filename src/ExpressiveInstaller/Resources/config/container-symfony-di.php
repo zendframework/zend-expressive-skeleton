@@ -63,8 +63,10 @@ if (! empty($config['dependencies']['delegators'])
         $delegatorFactory = new \App\ExpressiveSymfonyDelegatorFactory($delegatorNames, $factory);
         $container->register($service)
             ->addArgument($container)
+            ->addArgument($delegatorFactory)
+            ->addArgument($service)
             ->setClass($service)
-            ->setFactory([new \App\CallableFactory($delegatorFactory, $service), '__invoke']);
+            ->setFactory([\App\CallableFactory::class, 'build']);
     }
 }
 
@@ -82,7 +84,9 @@ if (! empty($config['dependencies']['services'])
 foreach ($config['dependencies']['factories'] as $name => $object) {
     $container->register($name)
         ->addArgument($container)
-        ->setFactory([new \App\CallableFactory($object, $name), '__invoke']);
+        ->addArgument($object)
+        ->addArgument($name)
+        ->setFactory([\App\CallableFactory::class, 'build']);
 }
 
 // Inject invokables

@@ -16,36 +16,17 @@ use Psr\Container\ContainerInterface;
 final class CallableFactory
 {
     /**
-     * @var callable
-     */
-    private $factory;
-
-    /**
-     * @var string
-     */
-    private $serviceName;
-
-    /**
-     * CallableFactory constructor.
-     * @param string|callable $factory
+     * @param ContainerInterface $container
+     * @param callable|string $factory
      * @param string $serviceName
+     * @return mixed
      */
-    public function __construct($factory, $serviceName)
+    public static function build(ContainerInterface $container, $factory, $serviceName)
     {
         if (is_string($factory) && class_exists($factory)) {
             $factory = new $factory;
         }
 
-        $this->factory = $factory;
-        $this->serviceName = $serviceName;
-    }
-
-    /**
-     * @param ContainerInterface $container
-     * @return mixed
-     */
-    public function __invoke(ContainerInterface $container)
-    {
-        return ($this->factory)($container, $this->serviceName);
+        return call_user_func($factory, $container, $serviceName);
     }
 }
