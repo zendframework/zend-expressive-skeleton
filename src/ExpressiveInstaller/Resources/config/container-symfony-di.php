@@ -87,7 +87,7 @@ foreach ($config['dependencies']['factories'] as $name => $object) {
 
 // Inject invokables
 foreach ($config['dependencies']['invokables'] as $name => $object) {
-    $container->register($name, new $object);
+    $container->register($name, $object);
 }
 
 // Inject aliases
