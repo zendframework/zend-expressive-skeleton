@@ -1,8 +1,11 @@
 <?php
 
 namespace App;
+
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Configuration for the Symfony Dependency Injection container.
@@ -17,26 +20,73 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class ExpressiveSymfonyContainer
 {
+    const ENABLE_CACHE = 'cache_symfony_container';
+
     /**
      * @var array
      */
     private $config;
 
     /**
+     * @var string|null
+     */
+    private $cachedContainerFile;
+
+    /**
      * @param array $config
      */
-    public function __construct(array $config)
-    {
+    public function __construct(
+        array $config,
+        $cachedContainerFile = null
+    ) {
         $this->config = $config;
+        $this->cachedContainerFile = $cachedContainerFile;
     }
 
     /**
-     * @return Container
+     * return Container
      */
-    public function build()
+    public function create()
+    {
+        $loadFromCache = null !== $this->cachedContainerFile &&
+            file_exists($this->cachedContainerFile) &&
+            isset($this->config[static::ENABLE_CACHE]) &&
+            $this->config[static::ENABLE_CACHE];
+
+        if ($loadFromCache) {
+            return $this->loadFromCache($this->cachedContainerFile);
+        }
+
+        $container = $this->build();
+
+        $this->cacheContainer($container);
+
+        return $container;
+    }
+
+    /**
+     * @var string $cachedContainerFile
+     * @return \ProjectServiceContainer
+     */
+    private function loadFromCache($cachedContainerFile)
+    {
+        require_once $cachedContainerFile;
+
+        return new \ProjectServiceContainer();
+    }
+
+    /**
+     * @return ContainerBuilder
+     */
+    private function build()
     {
         // Build container
         $container = new ContainerBuilder();
+
+        // Register the container in the container
+        // In this way in can be referenced in factories
+        $container->register('container')->setSynthetic(true);
+        $container->set('container', $container);
 
         // Inject config
         $container->register('config')->setSynthetic(true);
@@ -65,7 +115,7 @@ class ExpressiveSymfonyContainer
         // Inject factories
         foreach ($this->config['dependencies']['factories'] as $name => $object) {
             $container->register($name)
-                ->addArgument($container)
+                ->addArgument(new Reference('container'))
                 ->addArgument($object)
                 ->addArgument($name)
                 ->setFactory([\App\CallableFactory::class, 'build']);
@@ -128,11 +178,30 @@ class ExpressiveSymfonyContainer
 
             $delegatorFactory = new \App\ExpressiveSymfonyDelegatorFactory($delegatorNames, $factory);
             $container->register($service)
-                ->addArgument($container)
+                ->addArgument(new Reference('container'))
                 ->addArgument($delegatorFactory)
                 ->addArgument($service)
                 ->setClass($service)
                 ->setFactory([\App\CallableFactory::class, 'build']);
         }
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     */
+    private function cacheContainer(ContainerBuilder $container)
+    {
+        if (null === $this->cachedContainerFile) {
+            return;
+        }
+
+        if (!(isset($this->config[static::ENABLE_CACHE]) && $this->config[static::ENABLE_CACHE]))
+        {
+            return;
+        }
+
+        $dumper = new PhpDumper($container);
+
+        file_put_contents($this->cachedContainerFile, $dumper->dump());
     }
 }
