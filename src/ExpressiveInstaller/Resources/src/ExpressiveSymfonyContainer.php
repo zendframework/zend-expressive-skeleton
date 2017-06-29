@@ -133,6 +133,7 @@ class ExpressiveSymfonyContainer
         // Inject factories
         foreach ($this->config['dependencies']['factories'] as $name => $object) {
             $container->register($name)
+                ->setClass($object)
                 ->addArgument(new Reference('container'))
                 ->addArgument($object)
                 ->addArgument($name)
