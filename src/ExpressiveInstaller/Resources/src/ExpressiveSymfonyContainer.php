@@ -72,10 +72,6 @@ class ExpressiveSymfonyContainer
 
         $container = new \ProjectServiceContainer();
 
-        // Register the container in the container
-        // In this way in can be referenced in factories
-        $container->set('container', $container);
-
         // Inject config
         $container->set('config', $this->config);
 
@@ -98,11 +94,6 @@ class ExpressiveSymfonyContainer
     {
         // Build container
         $container = new ContainerBuilder();
-
-        // Register the container in the container
-        // In this way in can be referenced in factories
-        $container->register('container')->setSynthetic(true);
-        $container->set('container', $container);
 
         // Inject config
         $container->register('config')->setSynthetic(true);
@@ -132,7 +123,7 @@ class ExpressiveSymfonyContainer
         foreach ($this->config['dependencies']['factories'] as $name => $object) {
             $container->register($name)
                 ->setClass($object)
-                ->addArgument(new Reference('container'))
+                ->addArgument(new Reference('service_container'))
                 ->addArgument($object)
                 ->addArgument($name)
                 ->setFactory([\App\CallableFactory::class, 'build']);
@@ -195,7 +186,7 @@ class ExpressiveSymfonyContainer
 
             $delegatorFactory = new \App\ExpressiveSymfonyDelegatorFactory($delegatorNames, $factory);
             $container->register($service)
-                ->addArgument(new Reference('container'))
+                ->addArgument(new Reference('service_container'))
                 ->addArgument($delegatorFactory)
                 ->addArgument($service)
                 ->setClass($service)
