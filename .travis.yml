@@ -11,7 +11,7 @@ env:
   global:
     - COMPOSER_ARGS="--no-interaction --no-scripts"
     - COVERAGE_DEPS="satooshi/php-coveralls"
-    - LEGACY_DEPS="phpunit/phpunit"
+    - LEGACY_DEPS="twig/twig phpunit/phpunit"
 
 matrix:
   include:
