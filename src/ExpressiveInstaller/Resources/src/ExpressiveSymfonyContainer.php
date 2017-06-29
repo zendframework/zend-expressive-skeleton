@@ -44,7 +44,7 @@ class ExpressiveSymfonyContainer
     }
 
     /**
-     * return Container
+     * @return Container
      */
     public function create()
     {
@@ -59,9 +59,7 @@ class ExpressiveSymfonyContainer
 
         $container = $this->build();
 
-        $this->cacheContainer($container);
-
-        return $container;
+        return $this->cacheContainer($container);
     }
 
     /**
@@ -207,19 +205,22 @@ class ExpressiveSymfonyContainer
 
     /**
      * @param ContainerBuilder $container
+     * @return Container
      */
     private function cacheContainer(ContainerBuilder $container)
     {
-        if (null === $this->cachedContainerFile) {
-            return;
+        $cacheContainer = (null !== $this->cachedContainerFile) &&
+            isset($this->config[static::ENABLE_CACHE]) &&
+            $this->config[static::ENABLE_CACHE];
+
+        if ($cacheContainer) {
+            $dumper = new PhpDumper($container);
+
+            $container = $dumper->dump();
+
+            file_put_contents($this->cachedContainerFile, $container);
         }
 
-        if (! (isset($this->config[static::ENABLE_CACHE]) && $this->config[static::ENABLE_CACHE])) {
-            return;
-        }
-
-        $dumper = new PhpDumper($container);
-
-        file_put_contents($this->cachedContainerFile, $dumper->dump());
+        return $container;
     }
 }
