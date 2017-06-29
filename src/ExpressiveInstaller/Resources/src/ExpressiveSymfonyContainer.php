@@ -72,7 +72,16 @@ class ExpressiveSymfonyContainer
     {
         require_once $cachedContainerFile;
 
-        return new \ProjectServiceContainer();
+        $container = new \ProjectServiceContainer();
+
+        // Register the container in the container
+        // In this way in can be referenced in factories
+        $container->set('container', $container);
+
+        // Inject config
+        $container->set('config', $this->config);
+
+        return $container;
     }
 
     /**
