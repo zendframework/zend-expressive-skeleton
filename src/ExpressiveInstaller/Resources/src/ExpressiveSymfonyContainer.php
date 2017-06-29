@@ -81,6 +81,15 @@ class ExpressiveSymfonyContainer
         // Inject config
         $container->set('config', $this->config);
 
+        // Inject services
+        if (! empty($this->config['dependencies']['services'])
+            && is_array($this->config['dependencies']['services'])
+        ) {
+            foreach ($this->config['dependencies']['services'] as $name => $service) {
+                $container->set($name, $service);
+            }
+        }
+
         return $container;
     }
 
