@@ -54,23 +54,10 @@ class ExpressiveSymfonyContainer
             $this->config[static::ENABLE_CACHE];
 
         if ($loadFromCache) {
-            return $this->loadFromCache($this->cachedContainerFile);
+            $container = $this->loadFromCache($this->cachedContainerFile);
+        } else {
+            $container = $this->cacheContainer($this->build());
         }
-
-        $container = $this->build();
-
-        return $this->cacheContainer($container);
-    }
-
-    /**
-     * @var string $cachedContainerFile
-     * @return \ProjectServiceContainer
-     */
-    private function loadFromCache($cachedContainerFile)
-    {
-        require_once $cachedContainerFile;
-
-        $container = new \ProjectServiceContainer();
 
         // Inject config
         $container->set('config', $this->config);
@@ -88,16 +75,23 @@ class ExpressiveSymfonyContainer
     }
 
     /**
+     * @var string $cachedContainerFile
+     * @return \ProjectServiceContainer
+     */
+    private function loadFromCache($cachedContainerFile)
+    {
+        require_once $cachedContainerFile;
+
+        return new \ProjectServiceContainer();
+    }
+
+    /**
      * @return ContainerBuilder
      */
     private function build()
     {
         // Build container
         $container = new ContainerBuilder();
-
-        // Inject config
-        $container->register('config')->setSynthetic(true);
-        $container->set('config', $this->config);
 
         // Inject delegator factories
         // This is done early because Symfony Dependency Injection does not allow modification of a
@@ -107,16 +101,6 @@ class ExpressiveSymfonyContainer
             && is_array($this->config['dependencies']['delegators'])
         ) {
             $this->marshalDelegators($container);
-        }
-
-        // Inject services
-        if (! empty($this->config['dependencies']['services'])
-            && is_array($this->config['dependencies']['services'])
-        ) {
-            foreach ($this->config['dependencies']['services'] as $name => $service) {
-                $container->register($name)->setSynthetic(true);
-                $container->set($name, $service);
-            }
         }
 
         // Inject factories
