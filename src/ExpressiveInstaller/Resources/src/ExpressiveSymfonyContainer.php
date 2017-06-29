@@ -34,6 +34,7 @@ class ExpressiveSymfonyContainer
 
     /**
      * @param array $config
+     * @param string|null file name to use to store cached container
      */
     public function __construct(
         array $config,
@@ -184,11 +185,7 @@ class ExpressiveSymfonyContainer
      */
     private function cacheContainer(ContainerBuilder $container)
     {
-        $cacheContainer = (null !== $this->cachedContainerFile) &&
-            isset($this->config[static::ENABLE_CACHE]) &&
-            $this->config[static::ENABLE_CACHE];
-
-        if ($cacheContainer) {
+        if (null !== $this->cachedContainerFile) {
             $dumper = new PhpDumper($container);
 
             $container = $dumper->dump();
