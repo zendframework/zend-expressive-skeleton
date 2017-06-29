@@ -28,17 +28,17 @@ class ExpressiveSymfonyContainer
     private $config;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $cachedContainerFile;
 
     /**
      * @param array $config
-     * @param string|null file name to use to store cached container
+     * @param string $cachedContainerFile file name to use to store the cached container
      */
     public function __construct(
         array $config,
-        $cachedContainerFile = null
+        $cachedContainerFile
     ) {
         $this->config = $config;
         $this->cachedContainerFile = $cachedContainerFile;
@@ -49,16 +49,15 @@ class ExpressiveSymfonyContainer
      */
     public function create()
     {
-        $loadFromCache = null !== $this->cachedContainerFile &&
-            file_exists($this->cachedContainerFile) &&
+        $cacheEnabled = file_exists($this->cachedContainerFile) &&
             isset($this->config[static::ENABLE_CACHE]) &&
             $this->config[static::ENABLE_CACHE];
 
-        if ($loadFromCache) {
-            $container = $this->loadFromCache($this->cachedContainerFile);
-        } else {
-            $container = $this->cacheContainer($this->build());
+        if (! $cacheEnabled) {
+            $this->cacheContainer($this->build());
         }
+
+        $container = $this->loadFromCache($this->cachedContainerFile);
 
         // Inject config
         $container->set('config', $this->config);
@@ -181,18 +180,13 @@ class ExpressiveSymfonyContainer
 
     /**
      * @param ContainerBuilder $container
-     * @return Container
      */
     private function cacheContainer(ContainerBuilder $container)
     {
         if (null !== $this->cachedContainerFile) {
             $dumper = new PhpDumper($container);
 
-            $container = $dumper->dump();
-
-            file_put_contents($this->cachedContainerFile, $container);
+            file_put_contents($this->cachedContainerFile, $dumper->dump());
         }
-
-        return $container;
     }
 }
