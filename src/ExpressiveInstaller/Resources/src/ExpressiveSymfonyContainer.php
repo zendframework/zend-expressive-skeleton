@@ -214,8 +214,7 @@ class ExpressiveSymfonyContainer
             return;
         }
 
-        if (!(isset($this->config[static::ENABLE_CACHE]) && $this->config[static::ENABLE_CACHE]))
-        {
+        if (! (isset($this->config[static::ENABLE_CACHE]) && $this->config[static::ENABLE_CACHE])) {
             return;
         }
 
