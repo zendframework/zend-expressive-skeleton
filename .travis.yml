@@ -34,9 +34,14 @@ matrix:
       env:
         - DEPS=latest
         - TEST_COVERAGE=true
-    - php: hhvm
+    - php: nightly
+      env:
+        - DEPS=lowest
+    - php: nightly
+      env:
+        - DEPS=latest
   allow_failures:
-    - php: hhvm
+    - php: nightly
 
 before_install:
   - if [[ $TEST_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
