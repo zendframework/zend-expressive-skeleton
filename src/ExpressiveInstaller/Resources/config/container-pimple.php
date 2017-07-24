@@ -26,16 +26,14 @@ if (! empty($config['dependencies']['services'])
 // Inject factories
 foreach ($config['dependencies']['factories'] as $name => $object) {
     $container[$name] = function (Container $c) use ($object, $name) {
-        $psrContainer = new PsrContainer($c);
-
-        if ($psrContainer->has($object)) {
-            $factory = $psrContainer->get($object);
+        if ($c->offsetExists($object)) {
+            $factory = $c->offsetGet($object);
         } else {
             $factory = new $object();
-            $container[$object] = $c->protect($factory);
+            $c[$object] = $c->protect($factory);
         }
 
-        return $factory($psrContainer, $name);
+        return $factory(new PsrContainer($c), $name);
     };
 }
 
@@ -49,9 +47,7 @@ foreach ($config['dependencies']['invokables'] as $name => $object) {
 // Inject aliases
 foreach ($config['dependencies']['aliases'] as $alias => $target) {
     $container[$alias] = function (Container $c) use ($target) {
-        $psrContainer = new PsrContainer($c);
-
-        return $psrContainer->get($target);
+        return $c->offsetGet($target);
     };
 }
 
@@ -75,13 +71,13 @@ if (! empty($config['dependencies']['delegators'])
 ) {
     foreach ($config['dependencies']['delegators'] as $name => $delegators) {
         foreach ($delegators as $delegator) {
-            $container->extend($name, function ($service, $c) use ($delegator, $name) {
+            $container->extend($name, function ($service, Container $c) use ($delegator, $name) {
                 $factory  = new $delegator();
                 $callback = function () use ($service) {
                     return $service;
                 };
 
-                return $factory($c, $name, $callback);
+                return $factory(new PsrContainer($c), $name, $callback);
             });
         }
     }
