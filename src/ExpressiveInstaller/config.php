@@ -4,7 +4,7 @@ return [
     'packages' => [
         'aura/di'                                        => '^3.2',
         'filp/whoops'                                    => '^2.1.7',
-        'xtreamwayz/pimple-container-interop'            => '^1.0',
+        'pimple/pimple'                                  => '^3.2.2',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
         'zendframework/zend-expressive-fastroute'        => '^2.0',
         'zendframework/zend-expressive-platesrenderer'   => '^1.3.1',
@@ -70,7 +70,7 @@ return [
                 2 => [
                     'name'     => 'Pimple',
                     'packages' => [
-                        'xtreamwayz/pimple-container-interop',
+                        'pimple/pimple',
                     ],
                     'flat' => [
                         'Resources/config/container-pimple.php' => 'config/container.php',

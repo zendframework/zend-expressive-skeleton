@@ -1,6 +1,7 @@
 <?php
 
-use Xtreamwayz\Pimple\Container;
+use Pimple\Container;
+use Pimple\Psr11\Container as PsrContainer;
 
 // Load configuration
 $config = require __DIR__ . '/config.php';
@@ -16,7 +17,7 @@ if (! empty($config['dependencies']['services'])
     && is_array($config['dependencies']['services'])
 ) {
     foreach ($config['dependencies']['services'] as $name => $service) {
-        $container[$name] = function ($c) use ($service) {
+        $container[$name] = function (Container $c) use ($service) {
             return $service;
         };
     }
@@ -24,29 +25,33 @@ if (! empty($config['dependencies']['services'])
 
 // Inject factories
 foreach ($config['dependencies']['factories'] as $name => $object) {
-    $container[$name] = function ($c) use ($object, $name) {
-        if ($c->has($object)) {
-            $factory = $c->get($object);
+    $container[$name] = function (Container $c) use ($object, $name) {
+        $psrContainer = new PsrContainer($c);
+
+        if ($psrContainer->has($object)) {
+            $factory = $psrContainer->get($object);
         } else {
             $factory = new $object();
-            $c[$object] = $c->protect($factory);
+            $container[$object] = $c->protect($factory);
         }
 
-        return $factory($c, $name);
+        return $factory(new PsrContainer($c), $name);
     };
 }
 
 // Inject invokables
 foreach ($config['dependencies']['invokables'] as $name => $object) {
-    $container[$name] = function ($c) use ($object) {
+    $container[$name] = function (Container $c) use ($object) {
         return new $object();
     };
 }
 
 // Inject aliases
 foreach ($config['dependencies']['aliases'] as $alias => $target) {
-    $container[$alias] = function ($c) use ($target) {
-        return $c->get($target);
+    $container[$alias] = function (Container $c) use ($target) {
+        $psrContainer = new PsrContainer($c);
+
+        return $psrContainer->get($target);
     };
 }
 
@@ -82,4 +87,4 @@ if (! empty($config['dependencies']['delegators'])
     }
 }
 
-return $container;
+return new PsrContainer($container);
