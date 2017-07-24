@@ -35,7 +35,7 @@ foreach ($config['dependencies']['factories'] as $name => $object) {
             $container[$object] = $c->protect($factory);
         }
 
-        return $factory(new PsrContainer($c), $name);
+        return $factory($psrContainer, $name);
     };
 }
 
