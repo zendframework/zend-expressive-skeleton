@@ -154,7 +154,9 @@ class ExpressiveAuraConfig implements ContainerConfigInterface
             $delegatorFactory = new ExpressiveAuraDelegatorFactory($delegatorNames, $factory);
             $container->set(
                 $service,
-                $container->lazyGetCall($delegatorFactory, 'build', $container, $service)
+                $container->lazy(function () use ($delegatorFactory, $container, $service) {
+                    return $delegatorFactory->build($container, $service);
+                })
             );
         }
 
