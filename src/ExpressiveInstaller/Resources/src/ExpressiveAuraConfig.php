@@ -133,6 +133,7 @@ class ExpressiveAuraConfig implements ContainerConfigInterface
                 // Marshal from factory
                 $serviceFactory = $dependencies['factories'][$service];
                 $factory = function () use ($service, $serviceFactory, $container) {
+                    $serviceFactory = !is_object($serviceFactory) ? new $serviceFactory : $serviceFactory;
                     return $serviceFactory($container, $service);
                 };
                 unset($dependencies['factories'][$service]);
