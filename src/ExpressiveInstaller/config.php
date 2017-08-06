@@ -254,7 +254,7 @@ return [
             'options'        => [
                 1 => [
                     'name' => 'Doctrine',
-                    'package' => [
+                    'packages' => [
                         'kocal/zend-expressive-doctrinedatabase'
                     ],
                     'flat' => [
