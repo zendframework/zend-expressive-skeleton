@@ -251,6 +251,7 @@ return [
             'default'        => 'n',
             'required'       => false,
             'custom-package' => true,
+            'force'          => true,
             'options'        => [
                 1 => [
                     'name' => 'Doctrine',
@@ -260,14 +261,14 @@ return [
                     'flat' => [
                         'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
                         'Resources/config/database-doctrine-cli-config.php' => 'config/cli-config.php',
-                        'Resources/App/Entity/Post.php' => 'src/App/Entity/Post.php',
-                        'Resources/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
+                        'Resources/src/App/Entity/Post.php' => 'src/App/Entity/Post.php',
+                        'Resources/src/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
                     ],
                     'modular' => [
                         'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
                         'Resources/config/database-doctrine-cli-config.php' => 'config/cli-config.php',
-                        'Resources/App/Entity/Post.php' => 'src/App/Entity/Post.php',
-                        'Resources/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
+                        'Resources/src/App/Entity/Post.php' => 'src/App/Entity/Post.php',
+                        'Resources/src/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
                     ],
                     'minimal' => [
                         'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
