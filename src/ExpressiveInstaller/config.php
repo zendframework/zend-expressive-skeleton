@@ -4,6 +4,7 @@ return [
     'packages' => [
         'aura/di'                                        => '^3.2',
         'filp/whoops'                                    => '^2.1.7',
+        'kocal/zend-expressive-doctrinedatabase'         => '^1.0',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
         'zendframework/zend-expressive-fastroute'        => '^2.0',
@@ -242,6 +243,37 @@ return [
                         'Resources/config/templates-zend-view.php' => 'config/autoload/templates.global.php',
                     ],
                 ],
+            ],
+        ],
+
+        'database' => [
+            'question'       => 'Which database ORM do you want to use?',
+            'default'        => 'n',
+            'required'       => false,
+            'custom-package' => true,
+            'options'        => [
+                1 => [
+                    'name' => 'Doctrine',
+                    'package' => [
+                        'kocal/zend-expressive-doctrinedatabase'
+                    ],
+                    'flat' => [
+                        'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
+                        'Resources/config/database-doctrine-cli-config.php' => 'config/cli-config.php',
+                        'Resources/App/Entity/Post.php' => 'src/App/Entity/Post.php',
+                        'Resources/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
+                    ],
+                    'modular' => [
+                        'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
+                        'Resources/config/database-doctrine-cli-config.php' => 'config/cli-config.php',
+                        'Resources/App/Entity/Post.php' => 'src/App/Entity/Post.php',
+                        'Resources/App/Repository/PostRepository.php' => 'src/App/Repository/PostRepository.php',
+                    ],
+                    'minimal' => [
+                        'Resources/config/database-doctrine.php' => 'config/autoload/database.global.php',
+                        'Resources/config/database-doctrine-cli-config.php' => 'config/cli-config.php',
+                    ],
+                ]
             ],
         ],
 
