@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Set-up Doctrine command line.
+ *
+ * Usage: vendor/bin/doctrine <command>
+ */
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 

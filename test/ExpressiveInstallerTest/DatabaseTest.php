@@ -112,6 +112,7 @@ class DatabaseTest extends OptionalPackagesTestCase
         if ($installType !== OptionalPackages::INSTALL_MINIMAL) {
             $this->assertFileExists($this->projectRoot . '/src/App/Entity/Post.php');
             $this->assertFileExists($this->projectRoot . '/src/App/Repository/PostRepository.php');
+            $this->assertFileExists($this->projectRoot . '/config/cli-config.php');
         }
     }
 
