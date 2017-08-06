@@ -1,6 +1,7 @@
 .idea
 composer.phar
 composer.lock
+database.sqlite
 
 clover.xml
 coveralls-upload.json
