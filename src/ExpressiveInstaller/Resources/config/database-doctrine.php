@@ -12,13 +12,11 @@ return [
     ],
 
     'doctrine' => [
-        // DBAL configuration:
         // See http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html
+        //
+        // Do not forget to create your database: `./vendor/bin/doctrine orm:schema-tool:create`
         'driver' => 'pdo_mysql',
-        'dbname' => 'mydb',
-        'user' => 'user',
-        'password' => 'secret',
-        'host' => 'localhost',
+        'path' => __DIR__ . '/../../database.sqlite',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
