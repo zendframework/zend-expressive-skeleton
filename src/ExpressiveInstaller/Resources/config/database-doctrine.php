@@ -12,7 +12,8 @@ return [
     ],
 
     'doctrine' => [
-        // DBAL configuration. More at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html
+        // DBAL configuration:
+        // See http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html
         'driver' => 'pdo_mysql',
         'dbname' => 'mydb',
         'user' => 'user',
