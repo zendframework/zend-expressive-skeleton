@@ -123,7 +123,7 @@ class DatabaseTest extends OptionalPackagesTestCase
         yield 'doctrine-minimal' => [OptionalPackages::INSTALL_MINIMAL, 3, 2, 1, EntityManager::class];
 
         // @codingStandardsIgnoreStart
-        // Full framework installation test cases; installation options that install templates.
+        // Full framework installation test cases; installation options that install entities/repositories.
         $testCases = [
             // $containerOption, $routerOption, $databaseOption, $expectedDatabase
             'doctrine-full' => [3, 2, 1, EntityManager::class],
