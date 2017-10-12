@@ -9,8 +9,8 @@ namespace ExpressiveInstallerTest;
 
 use Aura\Di\Container as AuraContainer;
 use ExpressiveInstaller\OptionalPackages;
+use Pimple\Psr11\Container as PimpleContainer;
 use Psr\Container\ContainerInterface;
-use Xtreamwayz\Pimple\Container as PimpleContainer;
 use Zend\Expressive;
 use Zend\ServiceManager\ServiceManager as ZendServiceManagerContainer;
 

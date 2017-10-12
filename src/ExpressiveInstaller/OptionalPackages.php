@@ -105,7 +105,7 @@ class OptionalPackages
         'composer/composer',
         'filp/whoops',
         'mikey179/vfsstream',
-        'xtreamwayz/pimple-container-interop',
+        'pimple/pimple',
         'zendframework/zend-coding-standard',
         'zendframework/zend-expressive-aurarouter',
         'zendframework/zend-expressive-fastroute',
