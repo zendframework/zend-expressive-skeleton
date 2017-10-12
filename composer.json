@@ -39,7 +39,9 @@
         "zendframework/zend-expressive-zendrouter": "^2.0.1",
         "zendframework/zend-expressive-zendviewrenderer": "^1.4",
         "zendframework/zend-servicemanager": "^3.3",
-        "zfcampus/zf-development-mode": "^3.1"
+        "zfcampus/zf-development-mode": "^3.1",
+        "jsoumelidis/zend-sm-sf-di-bridge": "^0.1",
+        "jsoumelidis/symfony-di-container-interop": "^1.0"
     },
     "autoload": {
         "psr-4": {

@@ -13,6 +13,7 @@ use Psr\Container\ContainerInterface;
 use Xtreamwayz\Pimple\Container as PimpleContainer;
 use Zend\Expressive;
 use Zend\ServiceManager\ServiceManager as ZendServiceManagerContainer;
+use Symfony\Component\DependencyInjection\ContainerBuilder as SfContainerBuilder;
 
 class ContainersTest extends OptionalPackagesTestCase
 {
@@ -104,6 +105,9 @@ class ContainersTest extends OptionalPackagesTestCase
             'zend-sm-minimal' => [OptionalPackages::INSTALL_MINIMAL, 3, 2, 'minimal-files', 404, ZendServiceManagerContainer::class],
             'zend-sm-flat'    => [OptionalPackages::INSTALL_FLAT,    3, 2, 'copy-files', 200, ZendServiceManagerContainer::class],
             'zend-sm-modular' => [OptionalPackages::INSTALL_MODULAR, 3, 2, 'copy-files', 200, ZendServiceManagerContainer::class],
+            'sf-di-minimal'   => [OptionalPackages::INSTALL_MINIMAL, 4, 2, 'minimal-files', 404, SfContainerBuilder::class],
+            'sf-di-flat'      => [OptionalPackages::INSTALL_FLAT,    4, 2, 'copy-files', 200, SfContainerBuilder::class],
+            'sf-di-modular'   => [OptionalPackages::INSTALL_MODULAR, 4, 2, 'copy-files', 200, SfContainerBuilder::class],
         ];
         // @codingStandardsIgnoreEnd
     }
