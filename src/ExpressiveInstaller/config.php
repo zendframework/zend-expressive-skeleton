@@ -4,6 +4,8 @@ return [
     'packages' => [
         'aura/di'                                        => '^3.2',
         'filp/whoops'                                    => '^2.1.7',
+        'symfony/config'                                 => '^3.3',
+        'symfony/dependency-injection'                   => '^3.3',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
         'zendframework/zend-expressive-fastroute'        => '^2.0',
@@ -97,6 +99,38 @@ return [
                         'Resources/config/container-zend-servicemanager.php' => 'config/container.php',
                     ],
                 ],
+                4 => [
+                    'name'     => 'Symfony DependencyInjection',
+                    'packages' => [
+                        'symfony/dependency-injection',
+                    ],
+                    // @codingStandardsIgnoreStart
+                    'flat' => [
+                        'Resources/config/container-symfony-di.config.php'             => 'config/autoload/development.symfony-di.global.php',
+                        'Resources/config/development.container-symfony-di.config.php' => 'config/development.container-symfony-di.config.php.dist',
+                        'Resources/config/container-symfony-di.php'                    => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                            => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyContainer.php'                 => 'config/ExpressiveSymfonyContainer.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php'          => 'config/ExpressiveSymfonyDelegatorFactory.php',
+                    ],
+                    'modular' => [
+                        'Resources/config/container-symfony-di.config.php'             => 'config/autoload/development.symfony-di.global.php',
+                        'Resources/config/development.container-symfony-di.config.php' => 'config/development.container-symfony-di.config.php.dist',
+                        'Resources/config/container-symfony-di.php'                    => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                            => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyContainer.php'                 => 'config/ExpressiveSymfonyContainer.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php'          => 'config/ExpressiveSymfonyDelegatorFactory.php',
+                    ],
+                    'minimal' => [
+                        'Resources/config/container-symfony-di.config.php'             => 'config/autoload/development.symfony-di.global.php',
+                        'Resources/config/development.container-symfony-di.config.php' => 'config/development.container-symfony-di.config.php.dist',
+                        'Resources/config/container-symfony-di.php'                    => 'config/container.php',
+                        'Resources/src/CallableFactory.php'                            => 'config/CallableFactory.php',
+                        'Resources/src/ExpressiveSymfonyContainer.php'                 => 'config/ExpressiveSymfonyContainer.php',
+                        'Resources/src/ExpressiveSymfonyDelegatorFactory.php'          => 'config/ExpressiveSymfonyDelegatorFactory.php',
+                    ],
+                    // @codingStandardsIgnoreEnd
+                ]
             ],
         ],
 
