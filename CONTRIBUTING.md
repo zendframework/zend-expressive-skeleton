@@ -2,37 +2,16 @@
 
 ## RESOURCES
 
-If you wish to contribute to Zend Framework, please be sure to
+If you wish to contribute to this project, please be sure to
 read/subscribe to the following resources:
 
- -  [Coding Standards](https://github.com/zendframework/zf2/wiki/Coding-Standards)
- -  [Contributor's Guide](CONTRIBUTING.md)
- -  ZF Contributor's mailing list:
-    Archives: http://zend-framework-community.634137.n4.nabble.com/ZF-Contributor-f680267.html
-    Subscribe: zf-contributors-subscribe@lists.zend.com
- -  ZF Contributor's IRC channel:
-    #zftalk.dev on Freenode.net
+ - [Coding Standards](https://github.com/zendframework/zend-coding-standard)
+ - [Forums](https://discourse.zendframework.com/c/contributors)
+ - [Slack](https://zendframework-slack.herokuapp.com)
+ - [Code of Conduct](CODE_OF_CONDUCT.md)
 
-If you are working on new features or refactoring [create a proposal](https://github.com/zendframework/zend-expressive-skeleton/issues/new).
-
-## Reporting Potential Security Issues
-
-If you have encountered a potential security vulnerability, please **DO NOT** report it on the public
-issue tracker: send it to us at [zf-security@zend.com](mailto:zf-security@zend.com) instead.
-We will work with you to verify the vulnerability and patch it as soon as possible.
-
-When reporting issues, please provide the following information:
-
-- Component(s) affected
-- A description indicating how to reproduce the issue
-- A summary of the security vulnerability and impact
-
-We request that you contact us via the email address above and give the project
-contributors a chance to resolve the vulnerability and issue a new release prior
-to any public exposure; this helps protect users and provides them with a chance
-to upgrade and/or update in order to protect their applications.
-
-For sensitive email communications, please use [our PGP key](http://framework.zend.com/zf-security-pgp-key.asc).
+If you are working on new features or refactoring
+[create a proposal](https://github.com/zendframework/zend-expressive-skeleton/issues/new).
 
 ## RUNNING TESTS
 
@@ -41,7 +20,7 @@ To run tests:
 - Clone the repository:
 
   ```console
-  $ git clone git@github.com:zendframework/zend-expressive-skeleton.git
+  $ git clone git://github.com/zendframework/zend-expressive-skeleton.git
   $ cd zend-expressive-skeleton
   ```
 
@@ -54,13 +33,7 @@ To run tests:
   **NOTE:** Without the `--no-scripts` flag, composer will invoke the installer,
   which in turn will remove itself when complete.
 
-  If you don't have `curl` installed, you can also download `composer.phar` from
-  https://getcomposer.org/:
-
-  ```console
-  $ curl -sS https://getcomposer.org/installer | php --
-  $ ln -s composer.phar composer
-  ```
+  If you don't have `composer` installed, please download it from https://getcomposer.org/download/
 
 - Run the tests using the "test" command shipped in the `composer.json`:
 
@@ -83,11 +56,10 @@ section on running tests.
 To run CS checks only:
 
 ```console
-$ composer cs
+$ composer cs-check
 ```
 
 To attempt to automatically fix common CS issues:
-
 
 ```console
 $ composer cs-fix
@@ -102,12 +74,12 @@ Your first step is to establish a public repository from which we can
 pull your work into the master repository. We recommend using
 [GitHub](https://github.com), as that is where the component is already hosted.
 
-1. Setup a [GitHub account](http://github.com/), if you haven't yet
-2. Fork the repository (http://github.com/zendframework/zend-expressive-skeleton)
+1. Setup a [GitHub account](https://github.com/), if you haven't yet
+2. Fork the repository (https://github.com/zendframework/zend-expressive-skeleton)
 3. Clone the canonical repository locally and enter it.
 
    ```console
-   $ git clone git://github.com:zendframework/zend-expressive-skeleton.git
+   $ git clone git://github.com/zendframework/zend-expressive-skeleton.git
    $ cd zend-expressive-skeleton
    ```
 
@@ -187,15 +159,7 @@ To send a pull request, you have two options.
 If using GitHub, you can do the pull request from there. Navigate to
 your repository, select the branch you just created, and then select the
 "Pull Request" button in the upper right. Select the user/organization
-"zendframework" as the recipient.
-
-If using your own repository - or even if using GitHub - you can use `git
-format-patch` to create a patchset for us to apply; in fact, this is
-**recommended** for security-related patches. If you use `format-patch`, please
-send the patches as attachments to:
-
--  zf-devteam@zend.com for patches without security implications
--  zf-security@zend.com for security patches
+"zendframework" (or whatever the upstream organization is) as the recipient.
 
 #### What branch to issue the pull request against?
 
@@ -226,8 +190,3 @@ repository, we suggest doing some cleanup of these branches.
    ```console
    $ git push {username} :<branchname>
    ```
-
-
-## Conduct
-
-Please see our [CONDUCT.md](CONDUCT.md) to understand expected behavior when interacting with others in the project.

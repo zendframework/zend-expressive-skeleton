@@ -2,8 +2,8 @@
 
 return [
     'packages' => [
-        'aura/di'                                        => '^3.2',
-        'filp/whoops'                                    => '^2.1.7',
+        'aura/di'                                        => '^3.4',
+        'filp/whoops'                                    => '^2.1.12',
         'xtreamwayz/pimple-container-interop'            => '^1.0',
         'zendframework/zend-expressive-aurarouter'       => '^2.0',
         'zendframework/zend-expressive-fastroute'        => '^2.0',

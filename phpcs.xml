@@ -4,4 +4,5 @@
 
     <!-- Paths to check -->
     <file>src</file>
+    <file>test</file>
 </ruleset>

@@ -5,7 +5,6 @@ language: php
 cache:
   directories:
     - $HOME/.composer/cache
-    - vendor
 
 env:
   global:
@@ -29,26 +28,26 @@ matrix:
     - php: 7.1
       env:
         - DEPS=lowest
-        - CS_CHECK=true
     - php: 7.1
       env:
         - DEPS=latest
+        - CS_CHECK=true
         - TEST_COVERAGE=true
-    - php: hhvm
-  allow_failures:
-    - php: hhvm
+    - php: 7.2
+      env:
+        - DEPS=lowest
+    - php: 7.2
+      env:
+        - DEPS=latest
 
 before_install:
   - if [[ $TEST_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
-  - travis_retry composer self-update
 
 install:
   - if [[ $DEPS == 'latest' ]]; then travis_retry composer update $COMPOSER_ARGS ; fi
-  - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --prefer-lowest --prefer-stable $COMPOSER_ARGS ; fi
+  - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update $COMPOSER_ARGS --prefer-lowest --prefer-stable ; fi
   - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry composer require --dev $COMPOSER_ARGS $COVERAGE_DEPS ; fi
-  - travis_retry composer install $COMPOSER_ARGS
-  - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry composer require --dev $COMPOSER_ARGS $COVERAGE_DEPS ; fi
-  - composer show
+  - stty cols 120 && composer show
 
 script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then composer test-coverage ; else composer test ; fi
@@ -59,13 +58,3 @@ after_script:
 
 notifications:
   email: false
-  irc:
-    channels:
-      - "irc.freenode.org#zftalk.dev"
-    on_success: change
-    on_failure: always
-  slack:
-    rooms:
-      - secure: "oXoAIyDcnMUvtEKJmMkPzFTW81vwYuZPR4AFxOJvEFV+azeDMi8wmxUCEtde3qa9FhPfOw6uA7Xte3gsomyE5ozcRYHuSgmXQ62a6FnWCQ6Mxk3ZqV1cAtYDkDg38IUyKN9VibuLYocwC7VP65cwNRzYa+csUGOWpyI9TI0hdusPBdwy4ym1uNhkdTVDkDJnIjQaFOvEMc/5QXFIT+yWeqrzS91MUFQYJ/h5O1n9HjYfA2Z/Y6Q0lBQ0qg/vQQkmsIy5KMGDF5re8Tq/sCIEJCrHvt0O0/OwctUkXSk0oiDnocJZEKqdUsHd3umFt3tlqEqY/jRJzH9cXrhKjalv2Bo0xTNGBrsSulrhKnQgfBjHCAsBui6bYgSCzdi/g48/J6JHQc8mkT62dUccUoDK8em5PUBn8dRm+3d8h7nqFF9jxcvgiOtcahiQ2KNCm/Sq8/l8EFdxFC1cUcl8tz/+MyOmJZf2a+dFsDMsyAGtl2dxIRw5dBtdSobC7Q+A8bYo/fYGqfAFRKZUgmphgVtV5NlA0vNMpvxYSFQLnTrTM3T/z7bIQ5u+urARxIhOMvS38Qx7LnFpgjCtThMEQODGEqjfqkg2UTwL4hyRVRprdaZM/ooaNbDZ6sHazWw4tz3RxT48gjXlMi1wDrh8/MxFydfAmexsw3ry++phv6ORev4="
-    on_success: change
-    on_failure: always
