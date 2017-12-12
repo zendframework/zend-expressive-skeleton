@@ -104,6 +104,7 @@ class OptionalPackages
         'aura/di',
         'composer/composer',
         'filp/whoops',
+        'jsoumelidis/zend-sf-di-config',
         'mikey179/vfsstream',
         'xtreamwayz/pimple-container-interop',
         'zendframework/zend-coding-standard',
