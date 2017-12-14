@@ -133,6 +133,7 @@ class ExpressiveAuraConfig implements ContainerConfigInterface
                 // Marshal from factory
                 $serviceFactory = $dependencies['factories'][$service];
                 $factory = function () use ($service, $serviceFactory, $container) {
+                    $serviceFactory = !is_object($serviceFactory) ? new $serviceFactory : $serviceFactory;
                     return $serviceFactory($container, $service);
                 };
                 unset($dependencies['factories'][$service]);
@@ -154,7 +155,9 @@ class ExpressiveAuraConfig implements ContainerConfigInterface
             $delegatorFactory = new ExpressiveAuraDelegatorFactory($delegatorNames, $factory);
             $container->set(
                 $service,
-                $container->lazyGetCall($delegatorFactory, 'build', $container, $service)
+                $container->lazy(function () use ($delegatorFactory, $container, $service) {
+                    return $delegatorFactory->build($container, $service);
+                })
             );
         }
 
