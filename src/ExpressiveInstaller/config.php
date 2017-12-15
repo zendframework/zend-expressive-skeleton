@@ -32,7 +32,7 @@ return [
         ],
         'modular' => [
             'packages' => [
-                'zendframework/zend-expressive-tooling' => '^0.4.1',
+                'zendframework/zend-expressive-tooling' => '^1.0.0-dev',
             ],
             'resources' => [
                 'Resources/src/ConfigProvider.modular.php' => 'src/App/src/ConfigProvider.php',
