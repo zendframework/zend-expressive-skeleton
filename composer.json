@@ -54,6 +54,7 @@
         "zendframework/zend-coding-standard": "~1.0.0",
         "zendframework/zend-expressive-aurarouter": "^3.0.0-dev",
         "zendframework/zend-expressive-fastroute": "^3.0.0-dev",
+        "zendframework/zend-expressive-latte": "^1.0.0-dev",
         "zendframework/zend-expressive-platesrenderer": "^2.0.0-dev",
         "zendframework/zend-expressive-twigrenderer": "^2.0.0-dev",
         "zendframework/zend-expressive-zendrouter": "^3.0.0-dev",

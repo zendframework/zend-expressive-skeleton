@@ -10,6 +10,7 @@ return [
         'zendframework/zend-auradi-config'               => '^1.0.0-dev',
         'zendframework/zend-expressive-aurarouter'       => '^3.0.0-dev',
         'zendframework/zend-expressive-fastroute'        => '^3.0.0-dev',
+        'zendframework/zend-expressive-latte'            => '^1.0.0-dev',
         'zendframework/zend-expressive-platesrenderer'   => '^2.0.0-dev',
         'zendframework/zend-expressive-twigrenderer'     => '^2.0.0-dev',
         'zendframework/zend-expressive-zendrouter'       => '^3.0.0-dev',
@@ -266,6 +267,29 @@ return [
                     ],
                     'minimal' => [
                         'Resources/config/templates-zend-view.php' => 'config/autoload/templates.global.php',
+                    ],
+                ],
+                4 => [
+                    'name'     => 'Latte',
+                    'packages' => [
+                        'zendframework/zend-expressive-latte',
+                    ],
+                    'flat' => [
+                        'Resources/config/templates-latte.php'           => 'config/autoload/templates.global.php',
+                        'Resources/templates/latte-404.html.latte'       => 'templates/error/404.html.latte',
+                        'Resources/templates/latte-error.html.latte'     => 'templates/error/error.html.latte',
+                        'Resources/templates/latte-layout.html.latte'    => 'templates/layout/default.html.latte',
+                        'Resources/templates/latte-home-page.html.latte' => 'templates/app/home-page.html.latte',
+                    ],
+                    'modular' => [
+                        'Resources/config/templates-latte.php'           => 'config/autoload/templates.global.php',
+                        'Resources/templates/latte-404.html.latte'       => 'src/App/templates/error/404.html.latte',
+                        'Resources/templates/latte-error.html.latte'     => 'src/App/templates/error/error.html.latte',
+                        'Resources/templates/latte-layout.html.latte'    => 'src/App/templates/layout/default.html.latte',
+                        'Resources/templates/latte-home-page.html.latte' => 'src/App/templates/app/home-page.html.latte',
+                    ],
+                    'minimal' => [
+                        'Resources/config/templates-latte.php' => 'config/autoload/templates.global.php',
                     ],
                 ],
             ],

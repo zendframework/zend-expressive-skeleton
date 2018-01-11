@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\Response\JsonResponse;
+use Zend\Expressive\Latte\LatteRenderer;
 use Zend\Expressive\Router;
 use Zend\Expressive\Template;
 use Zend\Expressive\Plates\PlatesRenderer;
@@ -59,6 +60,9 @@ class HomePageAction implements MiddlewareInterface
         } elseif ($this->template instanceof ZendViewRenderer) {
             $data['templateName'] = 'Zend View';
             $data['templateDocs'] = 'https://docs.zendframework.com/zend-view/';
+        } elseif ($this->template instanceof LatteRenderer) {
+            $data['templateName'] = 'Latte';
+            $data['templateDocs'] = 'https://latte.nette.org/';
         }
 
         return new HtmlResponse($this->template->render('app::home-page', $data));
