@@ -205,21 +205,18 @@ return [
                         'zendframework/zend-expressive-platesrenderer',
                     ],
                     'flat' => [
-                        'Resources/config/templates-plates.php'      => 'config/autoload/templates.global.php',
                         'Resources/templates/plates-404.phtml'       => 'templates/error/404.phtml',
                         'Resources/templates/plates-error.phtml'     => 'templates/error/error.phtml',
                         'Resources/templates/plates-layout.phtml'    => 'templates/layout/default.phtml',
                         'Resources/templates/plates-home-page.phtml' => 'templates/app/home-page.phtml',
                     ],
                     'modular' => [
-                        'Resources/config/templates-plates.php'      => 'config/autoload/templates.global.php',
                         'Resources/templates/plates-404.phtml'       => 'src/App/templates/error/404.phtml',
                         'Resources/templates/plates-error.phtml'     => 'src/App/templates/error/error.phtml',
                         'Resources/templates/plates-layout.phtml'    => 'src/App/templates/layout/default.phtml',
                         'Resources/templates/plates-home-page.phtml' => 'src/App/templates/app/home-page.phtml',
                     ],
                     'minimal' => [
-                        'Resources/config/templates-plates.php' => 'config/autoload/templates.global.php',
                     ],
                 ],
                 2 => [
@@ -228,21 +225,18 @@ return [
                         'zendframework/zend-expressive-twigrenderer',
                     ],
                     'flat' => [
-                        'Resources/config/templates-twig.php'          => 'config/autoload/templates.global.php',
                         'Resources/templates/twig-404.html.twig'       => 'templates/error/404.html.twig',
                         'Resources/templates/twig-error.html.twig'     => 'templates/error/error.html.twig',
                         'Resources/templates/twig-layout.html.twig'    => 'templates/layout/default.html.twig',
                         'Resources/templates/twig-home-page.html.twig' => 'templates/app/home-page.html.twig',
                     ],
                     'modular' => [
-                        'Resources/config/templates-twig.php'          => 'config/autoload/templates.global.php',
                         'Resources/templates/twig-404.html.twig'       => 'src/App/templates/error/404.html.twig',
                         'Resources/templates/twig-error.html.twig'     => 'src/App/templates/error/error.html.twig',
                         'Resources/templates/twig-layout.html.twig'    => 'src/App/templates/layout/default.html.twig',
                         'Resources/templates/twig-home-page.html.twig' => 'src/App/templates/app/home-page.html.twig',
                     ],
                     'minimal' => [
-                        'Resources/config/templates-twig.php' => 'config/autoload/templates.global.php',
                     ],
                 ],
                 3 => [
@@ -251,21 +245,18 @@ return [
                         'zendframework/zend-expressive-zendviewrenderer',
                     ],
                     'flat' => [
-                        'Resources/config/templates-zend-view.php'      => 'config/autoload/templates.global.php',
                         'Resources/templates/zend-view-404.phtml'       => 'templates/error/404.phtml',
                         'Resources/templates/zend-view-error.phtml'     => 'templates/error/error.phtml',
                         'Resources/templates/zend-view-layout.phtml'    => 'templates/layout/default.phtml',
                         'Resources/templates/zend-view-home-page.phtml' => 'templates/app/home-page.phtml',
                     ],
                     'modular' => [
-                        'Resources/config/templates-zend-view.php'      => 'config/autoload/templates.global.php',
                         'Resources/templates/zend-view-404.phtml'       => 'src/App/templates/error/404.phtml',
                         'Resources/templates/zend-view-error.phtml'     => 'src/App/templates/error/error.phtml',
                         'Resources/templates/zend-view-layout.phtml'    => 'src/App/templates/layout/default.phtml',
                         'Resources/templates/zend-view-home-page.phtml' => 'src/App/templates/app/home-page.phtml',
                     ],
                     'minimal' => [
-                        'Resources/config/templates-zend-view.php' => 'config/autoload/templates.global.php',
                     ],
                 ],
             ],
