@@ -143,15 +143,12 @@ return [
                     ],
                     'flat' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-aura-router.php' => 'config/autoload/router.global.php',
                     ],
                     'modular' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-aura-router.php' => 'config/autoload/router.global.php',
                     ],
                     'minimal' => [
                         'Resources/config/routes-minimal.php' => 'config/routes.php',
-                        'Resources/config/router-aura-router.php' => 'config/autoload/router.global.php',
                     ],
                 ],
                 2 => [
@@ -161,15 +158,12 @@ return [
                     ],
                     'flat' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-fast-route.php' => 'config/autoload/router.global.php',
                     ],
                     'modular' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-fast-route.php' => 'config/autoload/router.global.php',
                     ],
                     'minimal' => [
                         'Resources/config/routes-minimal.php' => 'config/routes.php',
-                        'Resources/config/router-fast-route.php' => 'config/autoload/router.global.php',
                     ],
                 ],
                 3 => [
@@ -179,15 +173,12 @@ return [
                     ],
                     'flat' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-zend-router.php' => 'config/autoload/router.global.php',
                     ],
                     'modular' => [
                         'Resources/config/routes-full.php' => 'config/routes.php',
-                        'Resources/config/router-zend-router.php' => 'config/autoload/router.global.php',
                     ],
                     'minimal' => [
                         'Resources/config/routes-minimal.php' => 'config/routes.php',
-                        'Resources/config/router-zend-router.php' => 'config/autoload/router.global.php',
                     ],
                 ],
             ],
