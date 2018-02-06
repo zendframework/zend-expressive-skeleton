@@ -6,7 +6,6 @@ namespace AppTest\Action;
 
 use App\Action\PingAction;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\JsonResponse;
