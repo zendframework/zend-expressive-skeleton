@@ -60,4 +60,4 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // NotFoundMiddleware kicks in; alternately, you can provide other fallback
     // middleware to execute.
     $app->pipe(NotFoundMiddleware::class);
-}
+};
