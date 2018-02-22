@@ -46,7 +46,7 @@
         "roave/security-advisories": "dev-master",
         "zendframework/zend-component-installer": "^2.1",
         "zendframework/zend-config-aggregator": "^1.0",
-        "zendframework/zend-expressive": "^3.0.0alpha7",
+        "zendframework/zend-expressive": "^3.0.0alpha8",
         "zendframework/zend-expressive-helpers": "^5.0.0alpha3",
         "zendframework/zend-stdlib": "^3.1"
     },
