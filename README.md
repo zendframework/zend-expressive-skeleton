@@ -147,4 +147,4 @@ $ composer test
 Please note that the installer tests remove installed config files and templates
 before and after running the tests.
 
-Before contributing read [the contributing guide](CONTRIBUTING.md).
+Before contributing read [the contributing guide](docs/CONTRIBUTING.md).
