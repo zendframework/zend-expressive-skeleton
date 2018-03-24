@@ -3,11 +3,11 @@
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-expressive-skeleton.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-expressive-skeleton)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-expressive-skeleton/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-expressive-skeleton?branch=master)
 
-*Begin developing PSR-7 middleware applications in seconds!*
+*Begin developing PSR-15 middleware applications in seconds!*
 
 [zend-expressive](https://github.com/zendframework/zend-expressive) builds on
 [zend-stratigility](https://github.com/zendframework/zend-stratigility) to
-provide a minimalist PSR-7 middleware framework for PHP with routing, DI
+provide a minimalist PSR-15 middleware framework for PHP with routing, DI
 container, optional templating, and optional error handling capabilities.
 
 This installer will setup a skeleton application based on zend-expressive by
