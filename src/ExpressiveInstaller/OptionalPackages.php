@@ -63,8 +63,6 @@ class OptionalPackages
         '.coveralls.yml',
         '.travis.yml',
         'CHANGELOG.md',
-        'CONDUCT.md',
-        'CONTRIBUTING.md',
         'phpcs.xml',
         'phpstan.installer.neon',
         'src/App/templates/.gitkeep',
@@ -570,6 +568,7 @@ class OptionalPackages
 
         $this->recursiveRmdir($this->installerSource);
         $this->recursiveRmdir($this->projectRoot . 'test/ExpressiveInstallerTest');
+        $this->recursiveRmdir($this->projectRoot . 'docs');
 
         $this->preparePhpunitConfig();
     }
