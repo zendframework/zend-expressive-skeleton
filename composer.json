@@ -36,7 +36,7 @@
         "issues": "https://github.com/zendframework/zend-expressive-skeleton/issues",
         "source": "https://github.com/zendframework/zend-expressive-skeleton",
         "rss": "https://github.com/zendframework/zend-expressive-skeleton/releases.atom",
-        "slack": "https://zendframework-slack.herokuapp.com",
+        "chat": "https://zendframework-slack.herokuapp.com",
         "forum": "https://discourse.zendframework.com/c/questions/expressive"
     },
     "require": {
