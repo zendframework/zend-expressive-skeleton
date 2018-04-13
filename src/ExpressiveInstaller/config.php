@@ -11,7 +11,7 @@ return [
             'version' => '^0.3',
         ],
         'northwoods/container' => [
-            'version' => '^1.2',
+            'version' => '^3.0',
         ],
         'zendframework/zend-auradi-config' => [
             'version' => '^1.0',
