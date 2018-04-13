@@ -32,7 +32,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
-- Nothing.
+- [#251](https://github.com/zendframework/zend-expressive-skeleton/pull/251)
+  updates the minimum version of northwoods/container to version 3.0.0,
+  as that version now passes all DI container configuration compatibility tests.
 
 ### Deprecated
 
