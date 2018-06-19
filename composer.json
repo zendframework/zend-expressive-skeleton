@@ -51,6 +51,7 @@
     },
     "require-dev": {
         "composer/composer": "^1.5",
+        "elie29/zend-phpdi-config": "^3.0",
         "filp/whoops": "^2.1.12",
         "jsoumelidis/zend-sf-di-config": "^0.3",
         "mikey179/vfsstream": "^1.6.5",

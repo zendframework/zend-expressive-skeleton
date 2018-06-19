@@ -17,6 +17,7 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder as SfContainerBuilder;
 use Zend\Expressive;
 use Zend\ServiceManager\ServiceManager as ZendServiceManagerContainer;
+use DI\Container as PhpDIContainer;
 
 class ContainersTest extends OptionalPackagesTestCase
 {
@@ -116,6 +117,9 @@ class ContainersTest extends OptionalPackagesTestCase
             'sf-di-minimal'   => [OptionalPackages::INSTALL_MINIMAL, 5, 2, 'minimal-files', 404, SfContainerBuilder::class],
             'sf-di-flat'      => [OptionalPackages::INSTALL_FLAT,    5, 2, 'copy-files', 200, SfContainerBuilder::class],
             'sf-di-modular'   => [OptionalPackages::INSTALL_MODULAR, 5, 2, 'copy-files', 200, SfContainerBuilder::class],
+            'php-di-minimal'  => [OptionalPackages::INSTALL_MINIMAL, 6, 2, 'minimal-files', 404, PhpDIContainer::class],
+            'php-di-flat'     => [OptionalPackages::INSTALL_FLAT,    6, 2, 'copy-files', 200, PhpDIContainer::class],
+            'php-di-modular'  => [OptionalPackages::INSTALL_MODULAR, 6, 2, 'copy-files', 200, PhpDIContainer::class],
         ];
         // @codingStandardsIgnoreEnd
     }
