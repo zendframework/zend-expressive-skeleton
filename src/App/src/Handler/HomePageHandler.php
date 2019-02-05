@@ -53,6 +53,7 @@ class HomePageHandler implements RequestHandlerInterface
                 $data['containerDocs'] = 'http://auraphp.com/packages/2.x/Di.html';
                 break;
             case 'Pimple\Container':
+            case 'Pimple\Psr11\Container':
                 $data['containerName'] = 'Pimple';
                 $data['containerDocs'] = 'https://pimple.symfony.com/';
                 break;
