@@ -38,13 +38,6 @@ class HomePageHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        if ($this->template === null) {
-            return new JsonResponse([
-                'welcome' => 'Congratulations! You have installed the zend-expressive skeleton application.',
-                'docsUrl' => 'https://docs.zendframework.com/zend-expressive/',
-            ]);
-        }
-
         $data = [];
 
         switch ($this->containerName) {
@@ -84,6 +77,15 @@ class HomePageHandler implements RequestHandlerInterface
         } elseif ($this->router instanceof Router\ZendRouter) {
             $data['routerName'] = 'Zend Router';
             $data['routerDocs'] = 'https://docs.zendframework.com/zend-router/';
+        }
+
+        if ($this->template === null) {
+             $data = [
+                'welcome' => 'Congratulations! You have installed the zend-expressive skeleton application.',
+                'docsUrl' => 'https://docs.zendframework.com/zend-expressive/',
+            ] + $data;
+
+            return new JsonResponse($data, 200, [], JSON_PRETTY_PRINT);
         }
 
         if ($this->template instanceof PlatesRenderer) {
