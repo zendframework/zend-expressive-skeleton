@@ -62,6 +62,7 @@ class HomePageHandler implements RequestHandlerInterface
                 $data['containerDocs'] = 'https://docs.zendframework.com/zend-servicemanager/';
                 break;
             case 'Auryn\Injector':
+            case 'Northwoods\Container\InjectorContainer':
                 $data['containerName'] = 'Auryn';
                 $data['containerDocs'] = 'https://github.com/rdlowrey/Auryn';
                 break;
