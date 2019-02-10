@@ -156,8 +156,8 @@ class HomePageResponseTest extends OptionalPackagesTestCase
         // Test response content
         $html = (string) $response->getBody()->getContents();
 
-        $this->assertStringContainsString("Get started with {$containerName}", $html);
-        $this->assertStringContainsString("href=\"{$containerDocs}\"", $html);
+        $this->assertNotFalse(strpos($html, "Get started with {$containerName}"));
+        $this->assertNotFalse(strpos($html, "href=\"{$containerDocs}\""));
     }
 
     public function installCasesProvider() : Generator
