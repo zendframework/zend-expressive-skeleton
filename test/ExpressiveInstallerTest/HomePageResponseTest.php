@@ -114,7 +114,7 @@ class HomePageResponseTest extends OptionalPackagesTestCase
      *
      * @dataProvider installCasesProvider
      */
-    public function testHomePageResponseContainsCorrectCountainerInfo(
+    public function testHomePageResponseContainsCorrectContainerInfo(
         string $installType,
         int $containerOption,
         string $containerClass,
@@ -173,6 +173,11 @@ class HomePageResponseTest extends OptionalPackagesTestCase
             foreach ($this->rendererTypes as $rendererID => $rendererType) {
                 $rendererOption = $rendererType[0];
                 $rendererClass  = $rendererType[1];
+
+                // skip zend-view / non zend-sm combinations
+                if (3 === $rendererOption && 3 !== $containerOption) {
+                    continue;
+                }
 
                 foreach ($this->intallTypes as $intallType) {
                     $name = implode('-', [$containerID, $rendererID, $intallType]);
