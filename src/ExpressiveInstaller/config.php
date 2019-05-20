@@ -59,7 +59,7 @@ return [
             'version' => '^1.0',
         ],
         'zendframework/zend-servicemanager' => [
-            'version' => '^3.3',
+            'version' => '^3.4',
         ],
     ],
 
