@@ -53,6 +53,7 @@ class HomePageHandler implements RequestHandlerInterface
                 $data['containerDocs'] = 'http://auraphp.com/packages/2.x/Di.html';
                 break;
             case 'Pimple\Container':
+            case 'Pimple\Psr11\Container':
                 $data['containerName'] = 'Pimple';
                 $data['containerDocs'] = 'https://pimple.symfony.com/';
                 break;
@@ -61,6 +62,7 @@ class HomePageHandler implements RequestHandlerInterface
                 $data['containerDocs'] = 'https://docs.zendframework.com/zend-servicemanager/';
                 break;
             case 'Auryn\Injector':
+            case 'Northwoods\Container\InjectorContainer':
                 $data['containerName'] = 'Auryn';
                 $data['containerDocs'] = 'https://github.com/rdlowrey/Auryn';
                 break;
